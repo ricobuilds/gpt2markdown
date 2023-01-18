@@ -1,5 +1,5 @@
 {
-    "manifest_version": 1,
+    "manifest_version": 3,
     "name": "GPTExpo",
     "version": "1.0.0",
     "description": "Export your conversations with ChatGPT to Notion.",

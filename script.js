@@ -2,6 +2,7 @@
 const rootEle = document.querySelector('div[id="__next"]');
 const contEle = document.querySelector('.chatgptcont')
 let expoButton = document.createElement('button');
+let exportButton = document.createElement('button');
 let expoModal = document.createElement("div");
 
 // functions
@@ -22,7 +23,13 @@ expoButton.innerHTML = `
 </svg></span>
 <span>GPTExpo</span>
 `;
-expoButton.addEventListener('click', handleClick);
+exportButton.addEventListener('click', handleClick);
+
+exportButton.classList.add('font-medium', 'ml-1', 'lg:ml-0', 'mt-3', 'lg:mt-0', 'flex', 'items-center', 'gap-2', 'text-sm', 'rounded-md', 'py-2', 'px-3', 'btn-primary')
+contEle.append(exportButton)
+exportButton.innerHTML = `
+<span>Export to Notion</span>
+`;
 
 
 // modal
@@ -35,7 +42,16 @@ expoModal.innerHTML = `
       <span class="close-button">&times;</span>
     </div>
     <div class="modal-body">
-      <!-- Your modal content goes here -->
+      <!-- Your modal content goes here --> 
+      <select class="dbSelector">
+        <option>Database1</option>
+        <option>Database2</option>
+        <option>Database3</option>
+        <option>Database4</option>
+        <option>Database5</option>
+        <option>Database6</option>
+      </select>
+      <button class="font-medium ml-1 lg:ml-0 mt-3 lg:mt-0 flex items-center gap-2 text-sm rounded-md py-2 px-3 btn-primary">Export to Notion</button>
     </div>
   </div>
 `;
