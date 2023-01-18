@@ -7,13 +7,9 @@ let expoModal = document.createElement("div");
 
 // functions
 function handleClick() {
-    setTimeout(() => {
-        expoModal.classList.remove('hidden')
-        // expoModal.classList.add('hidden')
-    }, 1200);
 }
 
-expoButton.classList.add('font-medium', 'ml-1', 'lg:ml-0', 'mt-0', 'lg:mt-3', 'flex', 'items-center', 'gap-2', 'text-sm', 'rounded-md', 'py-2', 'px-3', 'btn-primary')
+expoButton.classList.add('font-medium','ml-1', 'md:ml-0', 'mt-0', 'md:mt-3', 'flex', 'items-center', 'justify-center', 'gap-2', 'text-sm', 'rounded-md', 'py-2', 'px-3', 'btn-primary')
 // contEle.append(expoButton)
 expoButton.innerHTML = `
 <span><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-file-export" width="16" height="16" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -23,7 +19,7 @@ expoButton.innerHTML = `
 </svg></span>
 <span>GPTExpo</span>
 `;
-exportButton.addEventListener('click', handleClick);
+expoButton.addEventListener('click', handleClick);
 
 exportButton.classList.add('font-medium', 'ml-1', 'lg:ml-0', 'mt-3', 'lg:mt-3', 'flex', 'items-center', 'gap-2', 'text-sm', 'rounded-md', 'py-2', 'px-3', 'btn-primary')
 exportButton.innerHTML = `
@@ -72,11 +68,11 @@ function updateInterface() {
 
 window.onload = () => {
 
-    updateInterface()
+    updateInterface();
 
     new MutationObserver(() => {
         try {
-            updateInterface()
+            updateInterface();
         } catch (err) {
             console.info("GPTExpo err found: Could not update the UI\n", err.stack)
         }
