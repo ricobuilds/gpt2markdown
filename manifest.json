@@ -1,8 +1,8 @@
 {
     "manifest_version": 3,
-    "name": "GPTExpo",
+    "name": "GPT2Notion",
     "version": "1.0.0",
-    "description": "Export your conversations with ChatGPT to Notion.",
+    "description": "Export your conversations with ChatGPT to Notion ~ by @EmergingTechGuy on Twitter",
     "icons": {
         "16": "images/favicon-16x16.png"
     },
