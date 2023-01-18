@@ -10,9 +10,9 @@ function handleClick() {
 
 let expoButton = document.createElement('button');
 expoButton.classList.add('text-sm', )
-contEle.append(authButton)
-authButton.innerHTML = 'GPTExpo';
-authButton.addEventListener('click', handleClick);
+contEle.append(expoButton)
+expoButton.innerHTML = 'GPTExpo';
+expoButton.addEventListener('click', handleClick);
 
 
 function updateInterface() {
