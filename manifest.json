@@ -4,15 +4,11 @@
     "version": "1.0.0",
     "description": "Export your conversations with ChatGPT to Notion.",
     "icons": {
-        "16": "images/icon16.png",
-        "48": "images/icon48.png",
-        "128": "images/icon128.png"
+        "16": "images/favicon-16x16.png"
     },
     "page_action": {
         "default_action": {
-            "16": "images/icon16-2.png",
-            "48": "images/icon48-2.png",
-            "128": "images/icon128-2.png"
+            "16": "images/favicon-16x16.png"
         }
     },
     "permissions": [
