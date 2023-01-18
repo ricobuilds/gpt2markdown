@@ -1,0 +1,11 @@
+{
+    "name": "GPTExpo",
+    "description": "Export your conversations with ChatGPT to Notion.",
+    "content_scripts": [
+        {
+            "matches": [
+                "https://chat.openai.com/*"
+            ]
+        }
+    ]
+}
