@@ -2,4 +2,4 @@
 
 > 🎉 `Say no to manual copying of your ChatGPT conversations to your notes, Notion etc.`
 
-This is a chrome extension that adds export capabilities to save your conversations with ChatGPT to Notion.
+This is a chrome extension that allows for the exporting of ChatGPT conversations to Notion
