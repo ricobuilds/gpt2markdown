@@ -9,7 +9,7 @@ function handleClick() {
 }
 
 let expoButton = document.createElement('button');
-expoButton.classList.add('text-sm', )
+expoButton.classList.add('font-medium', 'flex', 'items-center', 'gap-2', 'text-sm', 'rounded-md', 'py-2', 'px-3', 'btn-primary')
 contEle.append(expoButton)
 expoButton.innerHTML = 'GPTExpo';
 expoButton.addEventListener('click', handleClick);
