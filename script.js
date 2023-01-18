@@ -1,15 +1,18 @@
 // capturing the nextjs block
 const rootEle = document.querySelector('div[id="__next"]');
 const contEle = document.querySelector('.chatgptcont')
-
+let expoButton = document.createElement('button');
+let expoModal = document.createElement("div");
 
 // functions
 function handleClick() {
-    console.log('you pressed me!')
+    setTimeout(() => {
+        expoModal.classList.remove('hidden')
+        // expoModal.classList.add('hidden')
+    }, 1200);
 }
 
-let expoButton = document.createElement('button');
-expoButton.classList.add('font-medium', 'flex', 'items-center', 'gap-2', 'text-sm', 'rounded-md', 'py-2', 'px-3', 'btn-primary')
+expoButton.classList.add('font-medium', 'ml-1', 'lg:ml-0', 'mt-3', 'lg:mt-0', 'flex', 'items-center', 'gap-2', 'text-sm', 'rounded-md', 'py-2', 'px-3', 'btn-primary')
 contEle.append(expoButton)
 expoButton.innerHTML = `
 <span><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-file-export" width="16" height="16" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -22,6 +25,22 @@ expoButton.innerHTML = `
 expoButton.addEventListener('click', handleClick);
 
 
+// modal
+expoModal.classList.add('hidden')
+contEle.append(expoModal);
+expoModal.innerHTML = `
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2>Export conversation</h2>
+      <span class="close-button">&times;</span>
+    </div>
+    <div class="modal-body">
+      <!-- Your modal content goes here -->
+    </div>
+  </div>
+`;
+
+
 function updateInterface() {
     // is the button there?
     if (document.querySelector(".web-gptexpo-button")) return
@@ -31,8 +50,6 @@ function updateInterface() {
     if (!textarea) return
 
     let txtAreaWrapper = textarea.parentNode
-
-
 }
 
 
@@ -49,3 +66,14 @@ function updateInterface() {
 //         }
 //     }).observe(rootEle, {childList: true})
 // }
+
+// else
+
+var bottom = document.querySelector("div[class*='absolute bottom-0']");
+let footer = document.createElement('div')
+
+let extension_version = chrome.runtime.getManifest().version;
+footer.innerHTML = "<a href='https://github.com/0xreeko/gptexpo' target='_blank' class='underline'>GTPExpo extension v." + extension_version + "</a>. If you like the extension, please consider following me <a href='https://twitter.com/intent/follow?screen_name=emergingtechguy' target='_blank' class='underline'>@EmergingTechGuy</a>.";
+
+let lastEle = bottom.lastElementChild;
+lastEle.appendChild(footer);
