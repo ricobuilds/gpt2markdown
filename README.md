@@ -1,4 +1,4 @@
-<h1 align="center">GPTExpo</h1>
+<h1 align="center">GPT2Notion</h1>
 
 > 🎉 `Say no to manual copying of your ChatGPT conversations to your notes, Notion etc.`
 
