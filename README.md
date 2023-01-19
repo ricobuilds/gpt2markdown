@@ -8,7 +8,7 @@ Note⚠️: there may be cases where you need to reload the page again for it to
 
 ## Demo
 
-~ video here ~
+https://user-images.githubusercontent.com/35407606/213457492-296b6731-0967-48e6-abe7-9f0a5f9993fc.mp4
 
 ## Installation
 
