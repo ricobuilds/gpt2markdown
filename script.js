@@ -6,14 +6,34 @@ let exportButton = document.createElement('button');
 let expoModal = document.createElement("div");
 
 // functions
-function handleClick() {
+async function handleClick() {
+    // setTimeout(() => {
+    //     const e = document.querySelectorAll(".text-base");
+    //     let t = "";
+    //     for (const s of e) s.querySelector(".whitespace-pre-wrap") && (t += t == "" ? "" : "--------\n", t += `**${s.querySelectorAll('img').length>1?'You':'ChatGPT'}**: ${(s.querySelector(".whitespace-pre-wrap").innerHTML)}\n\n`);
+    //     const o = document.createElement("a");
+    //     o.download = (document.querySelector(".pr-14.bg-gray-800")?.innerText || "Conversation with ChatGPT") + ".md", o.href = URL.createObjectURL(new Blob([t])), o.style.display = "none", document.body.appendChild(o), o.click()
+    // }, 3000);
     setTimeout(() => {
         const e = document.querySelectorAll(".text-base");
         let t = "";
-        for (const s of e) s.querySelector(".whitespace-pre-wrap") && (t += t == "" ? "" : "--------\n", t += `**${s.querySelectorAll('img').length>1?'You':'ChatGPT'}**: ${h(s.querySelector(".whitespace-pre-wrap").innerHTML)}\n\n`);
-        const o = document.createElement("a");
-        o.download = (document.querySelector(".pr-14.bg-gray-800")?.innerText || "Conversation with ChatGPT") + ".md", o.href = URL.createObjectURL(new Blob([t])), o.style.display = "none", document.body.appendChild(o), o.click()
+        for (const s of e) s.querySelector(".whitespace-pre-wrap") && (t += t == "" ? "" : "--------\n", t += `**${s.querySelectorAll('img').length>1?'You':'ChatGPT'}**: ${(s.querySelector(".whitespace-pre-wrap").innerHTML)}\n\n`);
+       // Create a new text area element
+       const textArea = document.createElement("textarea");
+       textArea.value = t;
+       textArea.setAttribute("readonly", "");
+       textArea.style.position = "absolute";
+       textArea.style.left = "-9999px";
+       document.body.appendChild(textArea);
+       textArea.select();
+       document.execCommand("copy");
+       document.body.removeChild(textArea);
+
+       // Show a message to the user that the text has been copied to the clipboard
+       alert(`GPT2Markdown successfully exported the ${(document.querySelector(".pr-14.bg-gray-800")?.innerText)} chat to clipboard`);
     }, 3000);
+    
+
 }
 
 expoButton.classList.add('font-medium', 'ml-1', 'md:ml-0', 'mt-0', 'md:mt-3', 'flex', 'items-center', 'justify-center', 'gap-2', 'text-sm', 'rounded-md', 'py-2', 'px-3', 'btn-primary')
@@ -24,7 +44,7 @@ expoButton.innerHTML = `
 <path d="M14 3v4a1 1 0 0 0 1 1h4"></path>
 <path d="M11.5 21h-4.5a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v5m-5 6h7m-3 -3l3 3l-3 3"></path>
 </svg></span>
-<span>GPT 2 Notion</span>
+<span>GPT 2 Markdown</span>
 `;
 expoButton.addEventListener('click', handleClick);
 
@@ -32,32 +52,6 @@ exportButton.classList.add('font-medium', 'ml-1', 'lg:ml-0', 'mt-3', 'lg:mt-3', 
 exportButton.innerHTML = `
 <span>Export to Notion</span>
 `;
-
-
-// modal
-// expoModal.classList.add('hidden')
-// contEle.append(expoModal);
-// expoModal.innerHTML = `
-//   <div class="modal-content">
-//     <div class="modal-header">
-//       <h2>Export conversation</h2>
-//       <span class="close-button">&times;</span>
-//     </div>
-//     <div class="modal-body">
-//       <!-- Your modal content goes here --> 
-//       <select class="dbSelector">
-//         <option>Database1</option>
-//         <option>Database2</option>
-//         <option>Database3</option>
-//         <option>Database4</option>
-//         <option>Database5</option>
-//         <option>Database6</option>
-//       </select>
-//       <button class="font-medium ml-1 lg:ml-0 mt-3 lg:mt-0 flex items-center gap-2 text-sm rounded-md py-2 px-3 btn-primary">Export to Notion</button>
-//     </div>
-//   </div>
-// `;
-
 
 function updateInterface() {
     // is the button there?
