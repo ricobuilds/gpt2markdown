@@ -21,7 +21,7 @@ Not anymore! This is a easy-to-use chrome extension that allows for the exportin
 <details>
    <summary><h2>Manual installation</h2></summary>
 
-  ### Chrome and Microsoft Edge
+  ### Chrome & Microsoft Edge
   1. Download the code as a zip file [here](https://github.com/0xreeko/gpt2markdown/archive/master.zip).
   2. Unzip the file.
   3. Open `chrome://extensions` in Chrome / `edge://extensions` in Microsoft Edge.
