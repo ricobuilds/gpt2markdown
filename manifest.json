@@ -1,5 +1,5 @@
 {
-    "manifest_version": 2,
+    "manifest_version": 3,
     "name": "GPT2Markdown",
     "version": "1.0.0",
     "description": "Export your conversations with ChatGPT to Markdown ~ by @EmergingTechGuy on Twitter",
