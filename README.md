@@ -12,7 +12,7 @@ Note⚠️: there may be cases where you need to reload the page again for it to
 
 ## Installation
 
-<img valign="middle" alt="Chrome Web Store" src="https://visitor-badge.glitch.me/badge?page_id=0xreeko.gpt2markdown"> [<img valign="middle" src="https://img.shields.io/chrome-web-store/v/lpfemeioodjbpieminkklglpmhlngfcn.svg">][link-chrome] [<img valign="middle" alt="Chrome Web Store" src="https://img.shields.io/chrome-web-store/users/lpfemeioodjbpieminkklglpmhlngfcn?color=blue">][link-chrome]
+<img valign="middle" alt="Chrome Web Store" src="https://visitor-badge.glitch.me/badge?page_id=0xreeko.gpt2markdown"> [<img valign="middle" src="https://img.shields.io/chrome-web-store/v/mlfimpibamecbdnofjnbkjomeieclnjl.svg">][link-chrome] [<img valign="middle" alt="Chrome Web Store" src="https://img.shields.io/chrome-web-store/users/mlfimpibamecbdnofjnbkjomeieclnjl?color=blue">][link-chrome]
 
 ### Download from Web Stores
 [link-chrome]: https://chrome.google.com/webstore/detail/chatgpt-advanced/lpfemeioodjbpieminkklglpmhlngfcn 'Chrome Web Store'

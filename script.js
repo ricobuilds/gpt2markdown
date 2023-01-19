@@ -56,7 +56,7 @@ var bottom = document.querySelector("div[class*='absolute bottom-0']");
 let footer = document.createElement('div')
 
 let extension_version = chrome.runtime.getManifest().version;
-footer.innerHTML = "<a href='https://github.com/0xreeko/gpt2markdown' target='_blank' class='underline text-white'>GPT2Notion extension v." + extension_version + "</a>. If you like the extension, please consider following me <a href='https://twitter.com/intent/follow?screen_name=emergingtechguy' target='_blank' class='underline text-white'>@EmergingTechGuy</a> on Twitter.";
+footer.innerHTML = "<a href='https://github.com/0xreeko/gpt2markdown' target='_blank' class='underline text-white'>GPT2Markdown extension v." + extension_version + "</a>. If you like the extension, please consider following me <a href='https://twitter.com/intent/follow?screen_name=emergingtechguy' target='_blank' class='underline text-white'>@EmergingTechGuy</a> on Twitter.";
 
 let lastEle = bottom.lastElementChild;
 lastEle.appendChild(footer);
