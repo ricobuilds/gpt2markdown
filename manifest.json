@@ -14,8 +14,7 @@
         ]
     },
     "permissions": [
-        "activeTab",
-        "https://*.notion.com/*"
+        "activeTab"
     ],
     "content_scripts": [
         {
