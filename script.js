@@ -1,25 +1,21 @@
 // capturing the nextjs block
 const rootEle = document.querySelector('div[id="__next"]');
-const contEle = document.querySelector('.chatgptcont')
 let expoButton = document.createElement('button');
-let exportButton = document.createElement('button');
-let expoModal = document.createElement("div");
 
-// functions
 async function handleClick() {
     setTimeout(() => {
         // Show a message to the user that the text has been copied to the clipboard
-       alert(`GPT2Markdown successfully exported the ${(document.querySelector(".pr-14.bg-gray-800")?.innerText)} chat to clipboard`);
+        alert(`GPT2Markdown successfully exported the ${(document.querySelector(".pr-14.bg-gray-800")?.innerText)} chat to clipboard`);
+
         const e = document.querySelectorAll(".text-base");
         let t = "";
-        for (const s of e) s.querySelector(".whitespace-pre-wrap") && (t += t == "" ? "" : "--------\n", t += `**${s.querySelectorAll('img').length>1?'You':'ChatGPT'}**: ${(s.querySelector(".whitespace-pre-wrap").innerHTML)}\n\n`);
+        for (const s of e) s.querySelector(".whitespace-pre-wrap") && (t += t == "" ? "" : "--------\n", t += `**${s.querySelectorAll('img').length > 1 ? 'You' : 'ChatGPT'}**: ${(s.querySelector(".whitespace-pre-wrap").innerHTML)}\n\n`);
         const o = document.createElement("a");
         o.download = (document.querySelector(".pr-14.bg-gray-800")?.innerText || "Conversation with ChatGPT") + ".md", o.href = URL.createObjectURL(new Blob([t])), o.style.display = "none", document.body.appendChild(o), o.click()
     }, 3000);
 }
 
 expoButton.classList.add('font-medium', 'ml-1', 'md:ml-0', 'mt-0', 'md:mt-3', 'flex', 'items-center', 'justify-center', 'gap-2', 'text-sm', 'rounded-md', 'py-2', 'px-3', 'btn-primary')
-// contEle.append(expoButton)
 expoButton.innerHTML = `
 <span><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-file-export" width="16" height="16" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -31,10 +27,8 @@ expoButton.innerHTML = `
 expoButton.addEventListener('click', handleClick);
 
 function updateInterface() {
-    // is the button there?
     if (document.querySelector(".web-gptexpo-button")) return
 
-    // is the textarea there?
     textarea = document.querySelector('textarea')
     if (!textarea) return
 
@@ -42,7 +36,6 @@ function updateInterface() {
 
     txtAreaWrapper.parentNode.insertBefore(expoButton, txtAreaWrapper.nextSibling);
 }
-
 
 window.onload = () => {
 
