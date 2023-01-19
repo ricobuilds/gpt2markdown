@@ -30,11 +30,6 @@ expoButton.innerHTML = `
 `;
 expoButton.addEventListener('click', handleClick);
 
-exportButton.classList.add('font-medium', 'ml-1', 'lg:ml-0', 'mt-3', 'lg:mt-3', 'flex', 'items-center', 'gap-2', 'text-sm', 'rounded-md', 'py-2', 'px-3', 'btn-primary')
-exportButton.innerHTML = `
-<span>Export to Notion</span>
-`;
-
 function updateInterface() {
     // is the button there?
     if (document.querySelector(".web-gptexpo-button")) return
