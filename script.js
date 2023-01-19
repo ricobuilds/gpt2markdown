@@ -5,7 +5,7 @@ let expoButton = document.createElement('button');
 async function handleClick() {
     setTimeout(() => {
         // Show a message to the user that the text has been copied to the clipboard
-        alert(`GPT2Markdown successfully exported the ${(document.querySelector(".pr-14.bg-gray-800")?.innerText)} chat to clipboard`);
+        alert(`[GPT2Markdown]: « ${(document.querySelector(".pr-14.bg-gray-800")?.innerText)} » successfully exported!`);
 
         const e = document.querySelectorAll(".text-base");
         let t = "";
