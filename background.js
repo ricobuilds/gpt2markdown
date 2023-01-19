@@ -7,5 +7,3 @@ const openCGPT = () => {
 chrome.runtime.onInstalled.addListener(() => {
     openCGPT();
 });
-
-chrome.browserAction.onClicked.addListener(openCGPT)
