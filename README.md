@@ -4,6 +4,8 @@
 
 Not anymore! This is a easy-to-use chrome extension that allows for the exporting of ChatGPT conversations to Markdown files. Save your chats in 1 click!
 
+Note⚠️: there may be cases where you need to reload the page again for it to appear
+
 ## Demo
 
 ~ video here ~
