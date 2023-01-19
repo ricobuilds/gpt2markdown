@@ -1,8 +1,8 @@
 {
     "manifest_version": 2,
-    "name": "GPT2Notion",
+    "name": "GPT2Markdown",
     "version": "1.0.0",
-    "description": "Export your conversations with ChatGPT to Notion ~ by @EmergingTechGuy on Twitter",
+    "description": "Export your conversations with ChatGPT to Markdown ~ by @EmergingTechGuy on Twitter",
     "icons": {
         "16": "images/favicon-16x16.png"
     },

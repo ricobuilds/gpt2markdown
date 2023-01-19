@@ -1,5 +1,7 @@
-<h1 align="center">GPT2Notion</h1>
+<h1 align="center">GPT2Markdown</h1>
 
-> 🎉 `Say no to manual copying of your ChatGPT conversations to your notes, Notion etc.`
+>  ❓ `Are you manually copying your ChatGPT conversations to your notes, Notion etc?`
 
-This is a chrome extension that allows for the exporting of ChatGPT conversations to Notion.
+Not anymore! This is a easy-to-use chrome extension that allows for the exporting of ChatGPT conversations to Markdown files. Save your chats in 1 click!
+
+## Installation
