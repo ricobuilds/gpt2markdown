@@ -9,9 +9,7 @@
         "128": "images/GPT2Markdown.png"
     },
     "background": {
-        "scripts": [
-            "background.js"
-        ]
+        "service_worker": "background.js"
     },
     "content_scripts": [
         {
