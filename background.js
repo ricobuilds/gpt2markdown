@@ -1,4 +1,4 @@
-let manifest_version = chrome.runtime.getManifest().manifest_version;
+// let manifest_version = chrome.runtime.getManifest().manifest_version;
 
 const openCGPT = () => {
     chrome.tabs.create({ url: "https://chat.openai.com/chat" });
