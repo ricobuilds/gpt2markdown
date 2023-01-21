@@ -43,7 +43,7 @@ window.onload = () => {
         try {
             updateInterface();
         } catch (err) {
-            console.info("GPTExpo err found: Could not update the UI\n", err.stack)
+            console.info("GPT2Markdown err found: Could not update the UI\n", err.stack)
         }
     }).observe(rootEle, {
         childList: true
