@@ -29,7 +29,8 @@ window.onload = () => {
             console.info("GPT2Markdown err found: Could not update the UI\n", err.stack)
         }
     }).observe(rootEle, {
-        childList: true
+        childList: true,
+        subtree: true
     })
 }
 
@@ -80,4 +81,12 @@ function updateUI() {
         inputActionNode.appendChild(expoButton)
         expoButton.addEventListener('click', handleClick);
     }
+}
+
+function handleStore() {
+    chrome.storage.local.get('buttonAdded', (result) => {
+        if (result.buttonAdded) {
+            console.info('GPT2Markdown button added - not adding again')
+        }
+    })
 }
