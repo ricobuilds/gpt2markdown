@@ -13,9 +13,6 @@
             "background.js"
         ]
     },
-    "permissions": [
-        "activeTab"
-    ],
     "content_scripts": [
         {
             "matches": [
