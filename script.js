@@ -21,14 +21,12 @@ expoButton.addEventListener('click', handleClick);
 // store the button element in local storage
 localStorage.setItem("gptToMDButton", expoButton.outerHTML);
 
-window.onload = () => {
-    new MutationObserver(() => {
-        handleStore();
-    }).observe(rootEle, {
-        childList: true,
-        subtree: true
-    })
-}
+new MutationObserver(() => {
+    handleStore();
+}).observe(rootEle, {
+    childList: true,
+    subtree: true
+})
 
 // footer
 var bottom = document.querySelector("div[class*='absolute bottom-0']");
@@ -44,25 +42,14 @@ localStorage.setItem("gptToMDFooter", footer.outerHTML)
 
 // functions
 function handleClick() {
-        // Show a message to the user that the text has been copied to the clipboard
-        alert(`[GPT2Markdown]: « ${(document.querySelector(".pr-14.bg-gray-800")?.innerText)} » successfully exported!`);
+    // Show a message to the user that the text has been copied to the clipboard
+    alert(`[GPT2Markdown]: « ${(document.querySelector(".pr-14.bg-gray-800")?.innerText)} » successfully exported!`);
 
-        const e = document.querySelectorAll(".text-base");
-        let t = "";
-        for (const s of e) s.querySelector(".whitespace-pre-wrap") && (t += t == "" ? "" : "--------\n", t += `**${s.querySelectorAll('img').length > 1 ? 'You' : 'ChatGPT'}**: ${(s.querySelector(".whitespace-pre-wrap").innerHTML)}\n\n`);
-        const o = document.createElement("a");
-        o.download = (document.querySelector(".pr-14.bg-gray-800")?.innerText || "Conversation with ChatGPT") + ".md", o.href = URL.createObjectURL(new Blob([t])), o.style.display = "none", document.body.appendChild(o), o.click()
-}
-
-function updateUI() {
-    let storedButton = localStorage.getItem('gpt2MDButton')
-    let expoButton = document.createElement('button');
-    expoButton.innerHTML = storedButton
-    inputActionNode = document.querySelector("div[class*='relative flex h-full flex-1 md:flex-col']");
-    inputActionNode.appendChild(localStorage.getItem(expoButton));
-
-    let storedFooter = localStorage.getItem('gptToMDFooter')
-    lastEle.appendChild(storedFooter)
+    const e = document.querySelectorAll(".text-base");
+    let t = "";
+    for (const s of e) s.querySelector(".whitespace-pre-wrap") && (t += t == "" ? "" : "--------\n", t += `**${s.querySelectorAll('img').length > 1 ? 'You' : 'ChatGPT'}**: ${(s.querySelector(".whitespace-pre-wrap").innerHTML)}\n\n`);
+    const o = document.createElement("a");
+    o.download = (document.querySelector(".pr-14.bg-gray-800")?.innerText || "Conversation with ChatGPT") + ".md", o.href = URL.createObjectURL(new Blob([t])), o.style.display = "none", document.body.appendChild(o), o.click()
 }
 
 function handleStore() {
@@ -70,7 +57,8 @@ function handleStore() {
     if (!textarea) return
 
     existingButton = document.querySelector('.gpt2markdown-export')
-    if (!existingButton) {
+    existingFooter = document.querySelector("div[class*='absolute bottom-0']");
+    if (!existingButton || !existingFooter) {
         expoButton.classList.add('gpt2markdown-export', 'font-medium', 'ml-1', 'md:ml-0', 'mt-0', 'md:mt-3', 'flex', 'items-center', 'justify-center', 'gap-2', 'text-sm', 'rounded-md', 'py-2', 'px-3', 'btn-primary')
         expoButton.innerHTML = `<span><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-file-export" width="16" height="16" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -82,10 +70,9 @@ function handleStore() {
         inputActionNode = document.querySelector("div[class*='relative flex h-full flex-1 md:flex-col']");
         inputActionNode.appendChild(expoButton)
         expoButton.addEventListener('click', handleClick);
-    }
-    existingFooter = document.querySelector("div[class*='absolute bottom-0']");
-    if (!existingFooter) {
+        console.log('left existingButton')
 
+        var bottom = document.querySelector("div[class*='absolute bottom-0']");
         let footer = document.createElement('div')
 
         let extension_version = chrome.runtime.getManifest().version;
@@ -93,17 +80,7 @@ function handleStore() {
 
         let lastEle = bottom.lastElementChild;
         lastEle.appendChild(footer);
-        localStorage.setItem("gptToMDFooter", footer.innerHTML)
+        localStorage.setItem("gptToMDFooter", footer.outerHTML)
+        console.log('left existingFooter')
     }
 }
-
-targetNode = document.querySelector('a[class="flex py-3 px-3 items-center gap-3 relative rounded-md cursor-pointer break-all pr-14 bg-gray-800 hover:bg-gray-800 group"]')?.innerText
-
-// interval checker
-setInterval(() => {
-    let innerText = document.querySelector('a[class="flex py-3 px-3 items-center gap-3 relative rounded-md cursor-pointer break-all pr-14 bg-gray-800 hover:bg-gray-800 group"]')?.innerText;
-    if (innerText !== targetNode) {
-        previousInnerText = innerText;
-        handleStore();
-    }
-}, 2000);
