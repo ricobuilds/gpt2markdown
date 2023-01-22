@@ -43,7 +43,8 @@ localStorage.setItem("gptToMDFooter", footer.outerHTML)
 // functions
 function handleClick() {
     // Show a message to the user that the text has been copied to the clipboard
-    alert(`[GPT2Markdown]: « ${(document.querySelector(".pr-14.bg-gray-800")?.innerText)} » successfully exported!`);
+    if (document.querySelector(".pr-14.bg-gray-800")?.innerText === undefined) return
+    alert(`[GPT2Markdown]: « ${(document.querySelector(".pr-14.bg-gray-800")?.innerText)} » successfully exported!`)
 
     const e = document.querySelectorAll(".text-base");
     let t = "";
