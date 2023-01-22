@@ -70,7 +70,6 @@ function handleStore() {
         inputActionNode = document.querySelector("div[class*='relative flex h-full flex-1 md:flex-col']");
         inputActionNode.appendChild(expoButton)
         expoButton.addEventListener('click', handleClick);
-        console.log('left existingButton')
 
         var bottom = document.querySelector("div[class*='absolute bottom-0']");
         let footer = document.createElement('div')
@@ -81,6 +80,5 @@ function handleStore() {
         let lastEle = bottom.lastElementChild;
         lastEle.appendChild(footer);
         localStorage.setItem("gptToMDFooter", footer.outerHTML)
-        console.log('left existingFooter')
     }
 }
