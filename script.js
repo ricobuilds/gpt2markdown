@@ -2,7 +2,6 @@
 const rootEle = document.querySelector('div[id="__next"]');
 let innerText = document.querySelector('a[class="flex py-3 px-3 items-center gap-3 relative rounded-md cursor-pointer break-all pr-14 bg-gray-800 hover:bg-gray-800 group"]')?.innerText;
 
-// button
 let expoButton = document.createElement('button');
 
 expoButton.classList.add('gpt2markdown-export', 'font-medium', 'ml-1', 'md:ml-0', 'mt-0', 'md:mt-3', 'flex', 'items-center', 'justify-center', 'gap-2', 'text-sm', 'rounded-md', 'py-2', 'px-3', 'btn-primary')
@@ -18,7 +17,6 @@ inputActionNode = document.querySelector("div[class*='relative flex h-full flex-
 inputActionNode.appendChild(expoButton)
 expoButton.addEventListener('click', handleClick);
 
-// store the button element in local storage
 localStorage.setItem("gptToMDButton", expoButton.outerHTML);
 
 new MutationObserver(() => {
@@ -28,7 +26,6 @@ new MutationObserver(() => {
     subtree: true
 })
 
-// footer
 var bottom = document.querySelector("div[class*='absolute bottom-0']");
 let footer = document.createElement('div')
 
@@ -40,9 +37,7 @@ lastEle.appendChild(footer);
 localStorage.setItem("gptToMDFooter", footer.outerHTML)
 
 
-// functions
 function handleClick() {
-    // Show a message to the user that the text has been copied to the clipboard
     if (document.querySelector(".pr-14.bg-gray-800")?.innerText === undefined) return
     alert(`[GPT2Markdown]: « ${(document.querySelector(".pr-14.bg-gray-800")?.innerText)} » successfully exported!`)
 
@@ -83,3 +78,4 @@ function handleStore() {
         localStorage.setItem("gptToMDFooter", footer.outerHTML)
     }
 }
+// end
