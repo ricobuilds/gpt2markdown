@@ -1,5 +1,6 @@
 // start
 const rootEle = document.querySelector('div[id="__next"]');
+let innerText = document.querySelector('a[class="flex py-3 px-3 items-center gap-3 relative rounded-md cursor-pointer break-all pr-14 bg-gray-800 hover:bg-gray-800 group"]')?.innerText;
 
 // button
 let expoButton = document.createElement('button');
@@ -15,7 +16,6 @@ expoButton.innerHTML = `
     `;
 inputActionNode = document.querySelector("div[class*='relative flex h-full flex-1 md:flex-col']");
 inputActionNode.appendChild(expoButton)
-console.log(inputActionNode)
 expoButton.addEventListener('click', handleClick);
 
 // store the button element in local storage
@@ -40,13 +40,10 @@ footer.innerHTML = `<a href='https://github.com/0xreeko/gpt2markdown' target='_b
 let lastEle = bottom.lastElementChild;
 lastEle.appendChild(footer);
 localStorage.setItem("gptToMDFooter", footer.outerHTML)
-console.log(lastEle)
-console.log(footer)
 
 
 // functions
 function handleClick() {
-    setTimeout(() => {
         // Show a message to the user that the text has been copied to the clipboard
         alert(`[GPT2Markdown]: « ${(document.querySelector(".pr-14.bg-gray-800")?.innerText)} » successfully exported!`);
 
@@ -55,7 +52,6 @@ function handleClick() {
         for (const s of e) s.querySelector(".whitespace-pre-wrap") && (t += t == "" ? "" : "--------\n", t += `**${s.querySelectorAll('img').length > 1 ? 'You' : 'ChatGPT'}**: ${(s.querySelector(".whitespace-pre-wrap").innerHTML)}\n\n`);
         const o = document.createElement("a");
         o.download = (document.querySelector(".pr-14.bg-gray-800")?.innerText || "Conversation with ChatGPT") + ".md", o.href = URL.createObjectURL(new Blob([t])), o.style.display = "none", document.body.appendChild(o), o.click()
-    }, 500);
 }
 
 function updateUI() {
@@ -73,10 +69,8 @@ function handleStore() {
     textarea = document.querySelector('textarea')
     if (!textarea) return
 
-    console.log(textarea)
     existingButton = document.querySelector('.gpt2markdown-export')
     if (!existingButton) {
-        console.log(existingButton)
         expoButton.classList.add('gpt2markdown-export', 'font-medium', 'ml-1', 'md:ml-0', 'mt-0', 'md:mt-3', 'flex', 'items-center', 'justify-center', 'gap-2', 'text-sm', 'rounded-md', 'py-2', 'px-3', 'btn-primary')
         expoButton.innerHTML = `<span><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-file-export" width="16" height="16" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -88,10 +82,6 @@ function handleStore() {
         inputActionNode = document.querySelector("div[class*='relative flex h-full flex-1 md:flex-col']");
         inputActionNode.appendChild(expoButton)
         expoButton.addEventListener('click', handleClick);
-        expoButton.addEventListener('DOMNodeRemoved', function () {
-            chrome.storage.local.set({ 'isGTPToMDAdded': false });
-        });
-        chrome.storage.local.set({ 'isGTPToMDAdded': true })
     }
     existingFooter = document.querySelector("div[class*='absolute bottom-0']");
     if (!existingFooter) {
@@ -108,12 +98,11 @@ function handleStore() {
 }
 
 targetNode = document.querySelector('a[class="flex py-3 px-3 items-center gap-3 relative rounded-md cursor-pointer break-all pr-14 bg-gray-800 hover:bg-gray-800 group"]')?.innerText
-console.log(targetNode)
 
-// jhi
+// interval checker
 setInterval(() => {
     let innerText = document.querySelector('a[class="flex py-3 px-3 items-center gap-3 relative rounded-md cursor-pointer break-all pr-14 bg-gray-800 hover:bg-gray-800 group"]')?.innerText;
-    if(innerText !== targetNode) {
+    if (innerText !== targetNode) {
         previousInnerText = innerText;
         handleStore();
     }
