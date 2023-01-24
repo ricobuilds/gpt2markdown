@@ -11,7 +11,6 @@ Note⚠️: there may be cases where you need to reload the page again for it to
 https://user-images.githubusercontent.com/35407606/213457492-296b6731-0967-48e6-abe7-9f0a5f9993fc.mp4
 
 ## Installation
-Currently waiting on Chrome Web Store to approve the extension⏳ Check out my Twitter for updates: @emergingtechguy
 
 <img valign="middle" alt="This project has received too many requests, please try again later." src="https://visitor-badge.glitch.me/badge?page_id=0xreeko.gpt2markdown"> [<img valign="middle" src="https://img.shields.io/chrome-web-store/v/mlfimpibamecbdnofjnbkjomeieclnjl.svg">][link-chrome] [<img valign="middle" alt="Chrome Web Store" src="https://img.shields.io/chrome-web-store/users/mlfimpibamecbdnofjnbkjomeieclnjl?color=blue">][link-chrome]
 
