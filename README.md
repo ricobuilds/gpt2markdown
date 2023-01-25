@@ -15,7 +15,7 @@ https://user-images.githubusercontent.com/35407606/213457492-296b6731-0967-48e6-
 <img valign="middle" alt="This project has received too many requests, please try again later." src="https://visitor-badge.glitch.me/badge?page_id=0xreeko.gpt2markdown"> [<img valign="middle" src="https://img.shields.io/chrome-web-store/v/mlfimpibamecbdnofjnbkjomeieclnjl.svg">][link-chrome] [<img valign="middle" alt="Chrome Web Store" src="https://img.shields.io/chrome-web-store/users/mlfimpibamecbdnofjnbkjomeieclnjl?color=blue">][link-chrome]
 
 ### Download from Web Stores
-[link-chrome]: https://chrome.google.com/webstore/detail/chatgpt-advanced/lpfemeioodjbpieminkklglpmhlngfcn 'Chrome Web Store'
+[link-chrome]: https://chrome.google.com/webstore/detail/gpt2markdown/mlfimpibamecbdnofjnbkjomeieclnjl 'Chrome Web Store'
 [link-firefox]: https://addons.mozilla.org/firefox/addon/web-chatgpt/ 'Firefox Addons'
 [<img src="https://storage.googleapis.com/web-dev-uploads/image/WlD8wC6g8khYWPJUsQceQkhXSlv1/iNEddTyWiMfLSwFD6qGq.png" width="256" alt="Chrome" valign="middle">][link-chrome]
 <br>
