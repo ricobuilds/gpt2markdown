@@ -4,7 +4,8 @@
   "description": "Export your conversations with ChatGPT to Markdown ~ by @EmergingTechGuy on Twitter",
   "main": "background.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "webpack"
   },
   "repository": {
     "type": "git",
