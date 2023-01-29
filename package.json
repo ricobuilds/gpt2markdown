@@ -1,0 +1,28 @@
+{
+  "name": "gptexpo",
+  "version": "1.0.0",
+  "description": "Export your conversations with ChatGPT to Markdown ~ by @EmergingTechGuy on Twitter",
+  "main": "background.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/0xreeko/gpt2markdown.git"
+  },
+  "keywords": [],
+  "author": "https://twitter.com/0xreeko",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/0xreeko/gpt2markdown/issues"
+  },
+  "homepage": "https://github.com/0xreeko/gpt2markdown#readme",
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.1"
+  }
+}
