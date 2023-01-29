@@ -1,5 +1,4 @@
 .DS_Store
 
 images/imagesForCWS
-/node_modules
-/node_modules/*
+node_modules

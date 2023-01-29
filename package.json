@@ -5,7 +5,8 @@
   "main": "background.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "webpack"
+    "dev": "webpack",
+    "watch": "webpack --watch --progress --config webpack.config.js"
   },
   "repository": {
     "type": "git",
