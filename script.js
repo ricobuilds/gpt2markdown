@@ -61,7 +61,14 @@ function handleClick() {
         }
     }
     const o = document.createElement("a");
-    o.download = (document.querySelector(".pr-14.bg-gray-800")?.innerText || "Conversation with ChatGPT") + ".md", o.href = URL.createObjectURL(new Blob([t])), o.style.display = "none", document.body.appendChild(o), o.click()
+    let d = new Date()
+    date = d.toLocaleDateString('en-us', {
+        year: "numeric",
+        month: "short",
+        day: "numeric"
+    })
+    time = d.toLocaleTimeString('en-US', {hour: '2-digit', minute:'2-digit', second:'2-digit', hour12: true}).replace(/:/g, '-').replace(/\s/g, ' ')
+    o.download = (`[${date} • ${time}] ${document.querySelector(".pr-14.bg-gray-800")?.innerText}` || "Conversation with ChatGPT") + ".md", o.href = URL.createObjectURL(new Blob([t])), o.style.display = "none", document.body.appendChild(o), o.click()
 }
 
 function handleStore() {
