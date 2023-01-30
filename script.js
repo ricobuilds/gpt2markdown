@@ -57,7 +57,7 @@ function handleClick() {
         if (s.querySelector('.whitespace-pre-wrap')) {
 
             let innerHtml = s.querySelector(".whitespace-pre-wrap").innerHTML;
-            t += `${htmlToMarkdown(s.querySelectorAll('img').length > 1 ? `**You:**` : `**ChatGPT:**`)}\n ${htmlToMarkdown(innerHtml)}\n\n --------\n`
+            t += `${htmlToMarkdown(s.querySelectorAll('img').length > 1 ? `**You:**` : `**ChatGPT:**`)}\n${htmlToMarkdown(innerHtml)}\n\n --------\n`
         }
     }
     const o = document.createElement("a");
