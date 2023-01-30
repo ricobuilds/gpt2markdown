@@ -1,20 +1,4 @@
 // start
-const markdownFormatter = {
-    heading1: text => `# ${text}\n`,
-    heading2: text => `## ${text}\n`,
-    heading3: text => `### ${text}\n`,
-    bold: text => `**${text}**`,
-    italic: text => `_${text}_`,
-    link: (text, url) => `[${text}](${url})`,
-    bulletList: text => `- ${text}\n`,
-    numberedList: text => ` ${text}\n`,
-    codeBlock: text => `\`\`\`${text}\`\`\``,
-    emoji: text => `:${text}:`, //
-    blockquote: text => `> ${text}\n`,
-    hr: () => `---\n`, //
-    strikethrough: text => `~~${text}~~`,
-    highlight: text => `==${text}==` //
-}
 const rootEle = document.querySelector('div[id="__next"]');
 let innerText = document.querySelector('a[class="flex py-3 px-3 items-center gap-3 relative rounded-md cursor-pointer break-all pr-14 bg-gray-800 hover:bg-gray-800 group"]')?.innerText;
 
@@ -70,55 +54,10 @@ function handleClick() {
     const e = document.querySelectorAll(".text-base");
     let t = "";
     for (const s of e) {
-        if (s.querySelector(".whitespace-pre-wrap")) {
-            t += t == "" ? "" : "--------\n"
-            let innerHtml = s.querySelector(".whitespace-pre-wrap").innerHTML;
-            let _heading1 = s.querySelectorAll('h1')
-            _heading1.forEach(el => {
-                innerHtml = innerHtml.replace(el.outerHTML, markdownFormatter.heading1(el.innerText))
-            })
-            let _heading2 = s.querySelectorAll('h2')
-            _heading2.forEach(el => {
-                innerHtml = innerHtml.replace(el.outerHTML, markdownFormatter.heading1(el.innerText))
-            })
-            let _heading3 = s.querySelectorAll('h3')
-            _heading3.forEach(el => {
-                innerHtml = innerHtml.replace(el.outerHTML, markdownFormatter.heading1(el.innerText))
-            })
-            let pElements = s.querySelectorAll('p')
-            pElements.forEach(el => {
-                innerHtml = innerHtml.replace(el.outerHTML, el.innerHTML)
-            })
-            let divElements = s.querySelectorAll("div[class*='markdown prose w-full break-words dark:prose-invert light']")
-            divElements.forEach(el => {
-                innerHtml = innerHtml.replace(el.outerHTML, el.textContent)
-            })
-            let boldElements = s.querySelectorAll("strong")
-            boldElements.forEach(el => {
-                innerHtml = innerHtml.replace(el.outerHTML, markdownFormatter.bold(el.innerText));
-            });
-            let italicElements = s.querySelectorAll("em")
-            italicElements.forEach(el => {
-                innerHtml = innerHtml.replace(el.outerHTML, markdownFormatter.bold(el.innerText));
-            });
-            let linkElements = s.querySelectorAll("a");
-            linkElements.forEach(el => {
-                innerHtml = innerHtml.replace(el.outerHTML, markdownFormatter.link(el.innerText, el.href));
-            });
-            let codeElements = s.querySelectorAll("code");
-            codeElements.forEach(el => {
-                innerHtml = innerHtml.replace(el.outerHTML, markdownFormatter.codeBlock(el.innerText));
-            });
-            let delElements = s.querySelectorAll('del')
-            delElements.forEach(el => {
-                innerHtml = innerHtml.replace(el.outerHTML, markdownFormatter.strikethrough(el.innerText))
-            })
-            let blockquoteElements = s.querySelectorAll('blockquote')
-            blockquoteElements.forEach(el => {
-                innerHtml = innerHtml.replace(el.outerHTML, markdownFormatter.blockquote(el.innerText))
-            })
+        if (s.querySelector('.whitespace-pre-wrap')) {
 
-            t += `${markdownFormatter.bold(s.querySelectorAll('img').length > 1 ? 'You:' : 'ChatGPT:')} ${innerHtml}\n\n`
+            let innerHtml = s.querySelector(".whitespace-pre-wrap").innerHTML;
+            t += `${htmlToMarkdown(s.querySelectorAll('img').length > 1 ? `**You:**` : `**ChatGPT:**`)} ${htmlToMarkdown(innerHtml)}\n\n --------\n`
         }
     }
     const o = document.createElement("a");
@@ -159,5 +98,111 @@ function handleStore() {
 function cleanHeading1(text) {
     // remove any double quotation marks from the text - sometimes ChatGPT be adding "" quote marks
     return text.replace(/"/g, "");
+}
+
+function htmlToMarkdown(html) {
+    let markdown = html;
+    markdown = markdown.replace(/<\/?div[^>]*>/g, '');
+    markdown = markdown.replace(/<br[^>]*>/g, '\n');
+
+    markdown = markdown.replace(/<strong>(.*?)<\/strong>/g, '**$1**');
+    markdown = markdown.replace(/<em>(.*?)<\/em>/g, '*$1*');
+    markdown = markdown.replace(/<u>(.*?)<\/u>/g, '__$1__');
+    markdown = markdown.replace(/<code>(.*?)<\/code>/g, '`$1`');
+    markdown = markdown.replace(/<a href="(.*?)">(.*?)<\/a>/g, '[$2]($1)');
+    markdown = markdown.replace(/<h1>(.*?)<\/h1>/g, '# $1\n');
+    markdown = markdown.replace(/<h2>(.*?)<\/h2>/g, '## $1\n');
+    markdown = markdown.replace(/<h3>(.*?)<\/h3>/g, '### $1\n');
+    markdown = markdown.replace(/<h4>(.*?)<\/h4>/g, '#### $1\n');
+    markdown = markdown.replace(/<h5>(.*?)<\/h5>/g, '##### $1\n');
+    markdown = markdown.replace(/<h6>(.*?)<\/h6>/g, '###### $1\n');
+    markdown = markdown.replace(/<p>(.*?)<\/p>/g, '$1\n');
+
+    const unorderedRegex = /<ul>(.*?)<\/ul>/gs;
+    let match;
+    let indent = 0;
+    while ((match = unorderedRegex.exec(markdown))) {
+        const list = match[1];
+        const items = list.split('<li>');
+        let itemStr = '';
+        items.forEach((item, i) => {
+            if (i === 0) return;
+            item = item.replace('</li>', '');
+            if (item.indexOf('<ul>') !== -1) {
+                indent++;
+            }
+            itemStr += `${'  '.repeat(indent)}* ${item}`;
+            if (item.indexOf('</ul>') !== -1) {
+                indent--;
+            }
+        });
+        markdown = markdown.replace(match[0], `${itemStr}`);
+    }
+
+    const orderedRegex = /<ol.*?>(.*?)<\/ol>/gs;
+    const orderedLists = markdown.match(orderedRegex);
+    if (orderedLists) {
+        orderedLists.forEach((orderedList) => {
+            let mdOrderedList = '';
+            const listItems = orderedList.match(/<li.*?>(.*?)<\/li>/g);
+            if (listItems) {
+                listItems.forEach((listItem, index) => {
+                    if (listItem.indexOf('<ul>') !== -1) {
+                        indent++;
+                    }
+                    mdOrderedList += `${'  '.repeat(indent)}${index + 1
+                        }. ${listItem.replace(/<li.*?>(.*?)<\/li>/g, '$1\n')}`;
+                    if (listItem.indexOf('</ul>') !== -1) {
+                        indent--;
+                    }
+                });
+            }
+            markdown = markdown.replace(orderedList, mdOrderedList);
+        });
+    }
+
+    markdown = markdown.replace(/<ul>(.*?)<\/ul>/gs, function (match, p1) {
+        return (
+            '\n' +
+            p1.replace(/<li>(.*?)<\/li>/g, function (match, p2) {
+                return '\n- ' + p2;
+            })
+        );
+    });
+    const tableRegex = /<table>.*?<\/table>/g;
+    const tableRowRegex = /<tr>.*?<\/tr>/g;
+    const tableHeaderRegex = /<th.*?>(.*?)<\/th>/g;
+    const tableDataRegex = /<td.*?>(.*?)<\/td>/g;
+
+    const tables = html.match(tableRegex);
+    if (tables) {
+        tables.forEach((table) => {
+            let markdownTable = '\n';
+            const rows = table.match(tableRowRegex);
+            if (rows) {
+                rows.forEach((row) => {
+                    let markdownRow = '\n';
+                    const headers = row.match(tableHeaderRegex);
+                    if (headers) {
+                        headers.forEach((header) => {
+                            markdownRow += `| ${header.replace(tableHeaderRegex, '$1')} `;
+                        });
+                        markdownRow += '|\n';
+                        markdownRow += '| --- '.repeat(headers.length) + '|';
+                    }
+                    const data = row.match(tableDataRegex);
+                    if (data) {
+                        data.forEach((d) => {
+                            markdownRow += `| ${d.replace(tableDataRegex, '$1')} `;
+                        });
+                        markdownRow += '|';
+                    }
+                    markdownTable += markdownRow;
+                });
+            }
+            markdown = markdown.replace(table, markdownTable);
+        });
+    }
+    return markdown;
 }
 // end
