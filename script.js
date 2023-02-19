@@ -11,7 +11,7 @@ expoButton.innerHTML = `
     <path d="M14 3v4a1 1 0 0 0 1 1h4"></path>
     <path d="M11.5 21h-4.5a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v5m-5 6h7m-3 -3l3 3l-3 3"></path>
     </svg></span>
-    <span>GPT 2 Markdown</span>
+    <span>GPT 2 Markdown Save</span>
     `;
 inputActionNode = document.querySelector("div[class*='relative flex h-full flex-1 md:flex-col']");
 inputActionNode.appendChild(expoButton)
@@ -85,7 +85,7 @@ function handleStore() {
             <path d="M14 3v4a1 1 0 0 0 1 1h4"></path>
             <path d="M11.5 21h-4.5a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v5m-5 6h7m-3 -3l3 3l-3 3"></path>
             </svg></span>
-            <span>GPT 2 Markdown</span>
+            <span>GPT 2 Markdown Save</span>
     `;
         inputActionNode = document.querySelector("div[class*='relative flex h-full flex-1 md:flex-col']");
         inputActionNode.appendChild(expoButton)
@@ -123,6 +123,7 @@ function htmlToMarkdown(html) {
     markdown = markdown.replace(/<h4>(.*?)<\/h4>/g, '#### $1\n');
     markdown = markdown.replace(/<h5>(.*?)<\/h5>/g, '##### $1\n');
     markdown = markdown.replace(/<h6>(.*?)<\/h6>/g, '###### $1\n');
+    markdown = markdown.replace(/<button class="flex ml-auto gap-2">(.*?)<\/button>/g, ''); // Remove copy button SVG
     markdown = markdown.replace(/<p>(.*?)<\/p>/g, '$1\n');
 
     const unorderedRegex = /<ul>(.*?)<\/ul>/gs;
