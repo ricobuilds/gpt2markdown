@@ -123,7 +123,11 @@ function htmlToMarkdown(html) {
     markdown = markdown.replace(/<h4>(.*?)<\/h4>/g, '#### $1\n');
     markdown = markdown.replace(/<h5>(.*?)<\/h5>/g, '##### $1\n');
     markdown = markdown.replace(/<h6>(.*?)<\/h6>/g, '###### $1\n');
+    markdown = markdown.replace(/<pre><span class="">(.*?)<\/span>/g, '```$1\n'); // remove language tag portion
+    markdown = markdown.replace(/<\/pre>/g, '\n```\n'); // replace pre tags with code blocks
     markdown = markdown.replace(/<button class="flex ml-auto gap-2">(.*?)<\/button>/g, ''); // Remove copy button SVG
+    markdown = markdown.replace(/<span class="[^"]*">|<\/span>/g, ''); // Remove span tags
+    markdown = markdown.replace(/<code class="[^"]*">|<\/code>/g, ''); // remove code tags
     markdown = markdown.replace(/<p>(.*?)<\/p>/g, '$1\n');
 
     const unorderedRegex = /<ul>(.*?)<\/ul>/gs;
