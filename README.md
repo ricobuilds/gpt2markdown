@@ -38,4 +38,4 @@ Contributions are welcome! Please submit pull requests to the `dev` branch.
 
 ---
 
-If you found this project interesting, please consider <a href="https://twitter.com/hahahahohohe">following me on twitter <img src="https://storage.googleapis.com/saasify-assets/twitter-logo.svg" alt="twitter" height="24px" align="center"></a> and <a href="https://woze.beehiiv.com/subscribe">subscribing to my email newsletter</a> on emerging technologies.   
+If you found this project interesting, please consider <a href="https://twitter.com/emergingtechguy">following me on twitter <img src="https://storage.googleapis.com/saasify-assets/twitter-logo.svg" alt="twitter" height="24px" align="center"></a> and <a href="https://woze.beehiiv.com/subscribe">subscribing to my email newsletter</a> on emerging technologies.   
