@@ -49,7 +49,6 @@ lastEle.appendChild(footer);
 function handleClick() {
     if (document.querySelector(".pr-14.bg-gray-800")?.innerText === undefined) return
     handleLiveChat()
-    alert(`[GPT2Markdown]: « ${(document.querySelector(".pr-14.bg-gray-800")?.innerText)} » successfully exported!`)
 
     const e = document.querySelectorAll(".text-base");
     let t = "";
@@ -62,13 +61,8 @@ function handleClick() {
     }
     const o = document.createElement("a");
     let d = new Date()
-    date = d.toLocaleDateString('en-us', {
-        year: "numeric",
-        month: "short",
-        day: "numeric"
-    })
-    time = d.toLocaleTimeString('en-US', {hour: '2-digit', minute:'2-digit', second:'2-digit', hour12: true}).replace(/:/g, '-').replace(/\s/g, ' ')
-    o.download = (`[${date} • ${time}] ${document.querySelector(".pr-14.bg-gray-800")?.innerText}` || "Conversation with ChatGPT") + ".md", o.href = URL.createObjectURL(new Blob([t])), o.style.display = "none", document.body.appendChild(o), o.click()
+    date = d.toISOString()
+    o.download = (`${date} • ${document.querySelector(".pr-14.bg-gray-800")?.innerText}` || "Conversation with ChatGPT") + ".md", o.href = URL.createObjectURL(new Blob([t])), o.style.display = "none", document.body.appendChild(o), o.click()
 }
 
 function handleStore() {
