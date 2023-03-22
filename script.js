@@ -18,23 +18,12 @@ inputActionNode.appendChild(expoButton)
 expoButton.addEventListener('click', handleClick);
 expoButton.addEventListener('load', () => console.log(document.querySelector(".pr-14.bg-gray-800")?.innerText))
 
-const handleLiveChat = () => {
-    setTimeout(() => {
-        chatText = document.querySelector(".pr-14.bg-gray-800")?.innerText
-        if (chatText) console.log('exist!')
-        console.log('not exist!')
-    }, 500);
-}
-
 new MutationObserver(() => {
     handleStore();
 }).observe(rootEle, {
     childList: true,
     subtree: true
 })
-
-let lastEle = bottom.lastElementChild;
-lastEle.appendChild(footer);
 
 function handleClick() {
     if (document.querySelector(".pr-14.bg-gray-800")?.innerText === undefined) return
