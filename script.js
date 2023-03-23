@@ -27,8 +27,7 @@ new MutationObserver(() => {
 
 function handleClick() {
     if (document.querySelector(".pr-14.bg-gray-800")?.innerText === undefined) return
-    handleLiveChat()
-
+    
     const e = document.querySelectorAll(".text-base");
     let t = "";
     for (const s of e) {
