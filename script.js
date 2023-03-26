@@ -92,8 +92,7 @@ function htmlToMarkdown(html) {
     markdown = markdown.replace(/<pre>/g, '```'); // replace pre tags with code blocks
     markdown = markdown.replace(/<\/pre>/g, '\n```\n'); // replace pre tags with code blocks
     markdown = markdown.replace(/<button class="flex ml-auto gap-2">(.*?)<\/button>/g, ''); // Remove copy button SVG
-    markdown = markdown.replace(/<span class="[^"]*">|<\/span>/g, ''); // Remove span tags
-    markdown = markdown.replace(/<span>|<\/span>/g, ''); // Remove span tags with no class
+    markdown = markdown.replace(/<span(?: class="[^"]*")?>|<\/span>/g, ''); // Remove span tags with or without a class
     markdown = markdown.replace(/<p>(.*?)<\/p>/g, '$1\n');
 
     const unorderedRegex = /<ul>(.*?)<\/ul>/gs;
