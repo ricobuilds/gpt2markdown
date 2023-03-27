@@ -18,14 +18,6 @@ inputActionNode.appendChild(expoButton)
 expoButton.addEventListener('click', handleClick);
 expoButton.addEventListener('load', () => console.log(document.querySelector(".pr-14.bg-gray-800")?.innerText))
 
-const handleLiveChat = () => {
-    setTimeout(() => {
-        chatText = document.querySelector(".pr-14.bg-gray-800")?.innerText
-        if (chatText) console.log('exist!')
-        console.log('not exist!')
-    }, 500);
-}
-
 new MutationObserver(() => {
     handleStore();
 }).observe(rootEle, {
@@ -33,13 +25,9 @@ new MutationObserver(() => {
     subtree: true
 })
 
-let lastEle = bottom.lastElementChild;
-lastEle.appendChild(footer);
-
 function handleClick() {
     if (document.querySelector(".pr-14.bg-gray-800")?.innerText === undefined) return
-    handleLiveChat()
-
+    
     const e = document.querySelectorAll(".text-base");
     let t = "";
     for (const s of e) {
@@ -104,7 +92,7 @@ function htmlToMarkdown(html) {
     markdown = markdown.replace(/<pre>/g, '```'); // replace pre tags with code blocks
     markdown = markdown.replace(/<\/pre>/g, '\n```\n'); // replace pre tags with code blocks
     markdown = markdown.replace(/<button class="flex ml-auto gap-2">(.*?)<\/button>/g, ''); // Remove copy button SVG
-    markdown = markdown.replace(/<span class="[^"]*">|<\/span>/g, ''); // Remove span tags
+    markdown = markdown.replace(/<span(?: class="[^"]*")?>|<\/span>/g, ''); // Remove span tags with or without a class
     markdown = markdown.replace(/<p>(.*?)<\/p>/g, '$1\n');
 
     const unorderedRegex = /<ul>(.*?)<\/ul>/gs;
