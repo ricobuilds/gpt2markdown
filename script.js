@@ -95,6 +95,10 @@ function htmlToMarkdown(html) {
     markdown = markdown.replace(/<span(?: class="[^"]*")?>|<\/span>/g, ''); // Remove span tags with or without a class
     markdown = markdown.replace(/<p>(.*?)<\/p>/g, '$1\n');
 
+    // Add these lines to convert &lt; and &gt; to < and >, respectively
+    markdown = markdown.replace(/&lt;/g, '<');
+    markdown = markdown.replace(/&gt;/g, '>');
+
     const unorderedRegex = /<ul>(.*?)<\/ul>/gs;
     let match;
     let indent = 0;
