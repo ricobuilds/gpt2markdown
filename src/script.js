@@ -1,10 +1,10 @@
 // start
 const rootEle = document.querySelector('div[id="__next"]');
-let innerText = document.querySelector('a[class="flex py-3 px-3 items-center gap-3 relative rounded-md cursor-pointer break-all pr-14 bg-gray-800 hover:bg-gray-800 group"]')?.innerText;
-
+    
 let expoButton = document.createElement('button');
 
-expoButton.classList.add('gpt2markdown-export', 'font-medium', 'ml-1', 'md:ml-0', 'mt-0', 'md:mt-3', 'flex', 'items-center', 'justify-center', 'gap-2', 'text-sm', 'rounded-md', 'py-2', 'px-3', 'btn-primary')
+expoButton.setAttribute('class', 'gpt2markdown-export whitespace-nowrap font-medium flex items-center justify-center gap-2 text-sm rounded-md py-2 px-3 btn-primary');
+
 expoButton.innerHTML = `
     <span><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-file-export" width="16" height="16" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
     <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -13,7 +13,8 @@ expoButton.innerHTML = `
     </svg></span>
     <span>GPT 2 Markdown</span>
     `;
-inputActionNode = document.querySelector("div[class*='relative flex h-full flex-1 md:flex-col']");
+let inputActionNode = document.querySelector("div[class*='relative flex h-full flex-1 items-stretch md:flex-col']");
+inputActionNode.classList.add('gap-2')
 inputActionNode.appendChild(expoButton)
 expoButton.addEventListener('click', handleClick);
 expoButton.addEventListener('load', () => console.log(document.querySelector(".pr-14.bg-gray-800")?.innerText))
@@ -34,23 +35,23 @@ function handleClick() {
         if (s.querySelector('.whitespace-pre-wrap')) {
 
             let innerHtml = s.querySelector(".whitespace-pre-wrap").innerHTML;
-            t += `${htmlToMarkdown(s.querySelectorAll('img').length > 1 ? `**You:**` : `**ChatGPT:**`)}\n${htmlToMarkdown(innerHtml)}\n\n --------\n`
+            t += `${htmlToMarkdown(s.querySelectorAll('img').length > 1 ? `<b>You:</b>` : `<b>ChatGPT:</b>`)}\n${htmlToMarkdown(innerHtml)}\n\n --------\n`
         }
     }
     const o = document.createElement("a");
     let d = new Date()
-    date = d.toISOString()
+    let date = d.toISOString()
     o.download = (`${date} • ${document.querySelector(".pr-14.bg-gray-800")?.innerText}` || "Conversation with ChatGPT") + ".md", o.href = URL.createObjectURL(new Blob([t])), o.style.display = "none", document.body.appendChild(o), o.click()
 }
 
 function handleStore() {
-    textarea = document.querySelector('textarea')
+    let textarea = document.querySelector('textarea')
     if (!textarea) return
 
-    existingButton = document.querySelector('.gpt2markdown-export')
-    existingFooter = document.querySelector("div[class*='absolute bottom-0']");
+    let existingButton = document.querySelector('.gpt2markdown-export')
+    let existingFooter = document.querySelector("div[class*='absolute bottom-0']");
     if (!existingButton || !existingFooter) {
-        expoButton.classList.add('gpt2markdown-export', 'font-medium', 'ml-1', 'md:ml-0', 'mt-0', 'md:mt-3', 'flex', 'items-center', 'justify-center', 'gap-2', 'text-sm', 'rounded-md', 'py-2', 'px-3', 'btn-primary')
+        expoButton.setAttribute('class', 'gpt2markdown-export whitespace-nowrap font-medium flex items-center justify-center gap-2 text-sm rounded-md py-2 px-3 btn-primary');
         expoButton.innerHTML = `
             <span><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-file-export" width="16" height="16" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -59,15 +60,11 @@ function handleStore() {
             </svg></span>
             <span>GPT 2 Markdown</span>
     `;
-        inputActionNode = document.querySelector("div[class*='relative flex h-full flex-1 md:flex-col']");
+        inputActionNode = document.querySelector("div[class*='relative flex h-full flex-1 items-stretch md:flex-col']");
+        inputActionNode.classList.add('gap-2')
         inputActionNode.appendChild(expoButton)
         expoButton.addEventListener('click', handleClick);
     }
-}
-
-function cleanHeading1(text) {
-    // remove any double quotation marks from the text - sometimes ChatGPT be adding "" quote marks
-    return text.replace(/"/g, "");
 }
 
 function htmlToMarkdown(html) {
@@ -112,7 +109,7 @@ function htmlToMarkdown(html) {
             if (item.indexOf('<ul>') !== -1) {
                 indent++;
             }
-            itemStr += `${'  '.repeat(indent)}* ${item}`;
+            itemStr += `${'  '.repeat(indent)}\n* ${item}`;
             if (item.indexOf('</ul>') !== -1) {
                 indent--;
             }
@@ -146,7 +143,7 @@ function htmlToMarkdown(html) {
         return (
             '\n' +
             p1.replace(/<li>(.*?)<\/li>/g, function (match, p2) {
-                return '\n- ' + p2;
+                return '\n* ' + p2;
             })
         );
     });
@@ -184,6 +181,7 @@ function htmlToMarkdown(html) {
             markdown = markdown.replace(table, markdownTable);
         });
     }
+
     return markdown;
 }
 // end

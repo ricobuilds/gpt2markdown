@@ -9,7 +9,7 @@
         "128": "images/GPT2Markdown.png"
     },
     "background": {
-        "service_worker": "background.js"
+        "service_worker": "./src/background.js"
     },
     "content_scripts": [
         {
@@ -17,7 +17,7 @@
                 "https://chat.openai.com/*"
             ],
             "js": [
-                "script.js"
+                "dist/main.js"
             ]
         }
     ]
