@@ -1,7 +1,7 @@
 {
     "manifest_version": 3,
     "name": "GPT2Markdown",
-    "version": "1.1.5",
+    "version": "1.1.6",
     "description": "Export your conversations with ChatGPT to Markdown ~ by @EmergingTechGuy on Twitter",
     "icons": {
         "16": "images/GPT2Markdown--16.png",
